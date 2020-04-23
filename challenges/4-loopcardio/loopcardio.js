@@ -4,7 +4,9 @@ Precondition: n > 0, and n will be an integer.
 */
 
 function printNumbersUntil(n) {
-    // implement this
+    for (let i = 1; i <= n; i++) {
+        console.log(i);
+    }
 }
 
 /*
@@ -13,7 +15,9 @@ Precondition: n > 0, and n will be an integer.
 */
 
 function printEvenNumbersUntil(n) {
-    // implement this
+    for (let i = 2; i <= n; i = i + 2) {
+        console.log(i);
+    }
 }
 
 /*
@@ -24,7 +28,15 @@ function printEvenNumbersUntil(n) {
 */
 
 function printNumbersUntilWithNegative(n) {
-    // implement this
+    if (n > 0) {
+        for (let i = 1; i <= n; i++) {
+            console.log(i);
+        }
+    } else if (n < 0) {
+        for (let i = -1; i >= n; i--) {
+            console.log(i);
+        }
+    }
 }
 
 /*
@@ -33,7 +45,11 @@ Precondition: n > 0, and n will be an integer.
 */
 
 function sumOfNumbersUpto(n) {
-    // implement this
+    let sum = 0;
+    for (let i = 0; i <= n; i++) {
+        sum += i;
+    }
+    return sum;
 }
 
 /*
@@ -43,7 +59,17 @@ function sumOfNumbersUpto(n) {
 */
 
 function fizzBuzz() {
-    // implement this
+    for (let i = 1; i <= 100; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 == 0) {
+            console.log("Fizz");
+        } else if (i % 5 == 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }
 }
 
 export {
