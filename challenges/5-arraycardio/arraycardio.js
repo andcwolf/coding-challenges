@@ -9,7 +9,8 @@ import letterGrade from "../1-grades/grades";
     arr is guaranteed to be an array.
 */
 function lastElement(arr) {
-    // implementation
+    if (Array.isArray(arr) && arr.length > 0) console.log(arr.pop());
+    else console.log(null);
 }
 
 /*
@@ -25,7 +26,10 @@ function lastElement(arr) {
 */
 
 function getElementAt(arr, index) {
-    // implementation
+    if (index >= 0) console.log(index); // return any element assigned to index >= 0 disregarding array upper bounds
+    if (index < 0) {
+        console.log(arr.slice(index, index + 1)); // rough draft , if index is negative then it'll return what's in the array. If out of bounds, then it'll return []
+    }
 }
 
 /*  
