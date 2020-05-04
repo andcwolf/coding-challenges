@@ -10,7 +10,6 @@ import letterGrade from "../1-grades/grades";
 */
 function lastElement(arr) {
     if (Array.isArray(arr) && arr.length > 0) console.log(arr.pop());
-    else console.log(null);
 }
 
 /*
@@ -26,9 +25,13 @@ function lastElement(arr) {
 */
 
 function getElementAt(arr, index) {
-    if (index >= 0) console.log(index); // return any element assigned to index >= 0 disregarding array upper bounds
-    if (index < 0) {
-        console.log(arr.slice(index, index + 1)); // rough draft , if index is negative then it'll return what's in the array. If out of bounds, then it'll return []
+    if (index >= 0) {
+        console.log(arr[index]);
+    } else if (index < 0) {
+        console.log(arr[arr.length + index]);
+    }
+    if (index > arr[arr.length] || index < arr[arr.length - arr[arr.length]]) {
+        console.log("undefined");
     }
 }
 
@@ -40,7 +43,14 @@ function getElementAt(arr, index) {
         median([4,6,8,10]) --> 7 (take mean of 6 and 8)
 */
 function median(arr) {
-    // implementation
+    let a = 0;
+    if (arr.length === 0) return console.log(null);
+    if (arr.length % 2 === 0) {
+        a = (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
+    } else {
+        a = arr[(arr.length - 1) / 2];
+    }
+    console.log(a);
 }
 
 /*  
@@ -52,7 +62,12 @@ function median(arr) {
         exists([2,3], 5) --> false
 */
 function exists(arr, num) {
-    // implementation
+    for (let a = 0; a < arr.length; a++) {
+        if (arr[a] === num) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /*  
@@ -64,7 +79,12 @@ function exists(arr, num) {
         findIndex([2,3], 5) --> -1
 */
 function findIndex(arr, num) {
-    // implementation
+    for (let a = 0; a < arr.length; a++) {
+        if (arr[a] === num) {
+            return console.log(arr.indexOf(num));
+        }
+    }
+    return console.log(arr.indexOf());
 }
 
 /*  
@@ -76,7 +96,7 @@ function findIndex(arr, num) {
 
 */
 function getLetterGrades(arr) {
-    // implementation
+    // implement this
 }
 
 /*
