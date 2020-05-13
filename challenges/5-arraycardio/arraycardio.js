@@ -9,7 +9,11 @@ import letterGrade from "../1-grades/grades";
     arr is guaranteed to be an array.
 */
 function lastElement(arr) {
-    if (Array.isArray(arr) && arr.length > 0) console.log(arr.pop());
+    if (Array.isArray(arr) && arr.length > 0) {
+        return arr[arr.length - 1];
+    } else if (arr == [] || arr == null || arr == 0 || arr == undefined) {
+        return null;
+    }
 }
 
 /*
@@ -26,14 +30,13 @@ function lastElement(arr) {
 
 function getElementAt(arr, index) {
     if (index >= 0) {
-        console.log(arr[index]);
+        return arr[index];
     } else if (index < 0) {
-        console.log(arr[arr.length + index]);
+        return arr[arr.length + index]; // element at arr.length + index
     }
-    if (index > arr[arr.length] || index < arr[arr.length - arr[arr.length]]) {
-        console.log("undefined");
+    if (index > arr.length - 1 || index < arr[arr.length - arr[arr.length]]) {
     }
-}
+} // figure out what the lower bound check is. The lowest negative number here.
 
 /*  
     You are given a sorted array of Numbers. Return the median.
@@ -44,13 +47,13 @@ function getElementAt(arr, index) {
 */
 function median(arr) {
     let a = 0;
-    if (arr.length === 0) return console.log(null);
+    if (arr.length === 0) return null;
     if (arr.length % 2 === 0) {
         a = (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
     } else {
         a = arr[(arr.length - 1) / 2];
     }
-    console.log(a);
+    return a;
 }
 
 /*  
@@ -62,8 +65,8 @@ function median(arr) {
         exists([2,3], 5) --> false
 */
 function exists(arr, num) {
-    for (let a = 0; a < arr.length; a++) {
-        if (arr[a] === num) {
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index] === num) {
             return true;
         }
     }
@@ -79,12 +82,13 @@ function exists(arr, num) {
         findIndex([2,3], 5) --> -1
 */
 function findIndex(arr, num) {
-    for (let a = 0; a < arr.length; a++) {
-        if (arr[a] === num) {
-            return console.log(arr.indexOf(num));
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) {
+            //arr[4] === 99]
+            return i;
         }
     }
-    return console.log(arr.indexOf());
+    return -1;
 }
 
 /*  
@@ -96,7 +100,23 @@ function findIndex(arr, num) {
 
 */
 function getLetterGrades(arr) {
-    // implement this
+    letterGrade();
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == "A") {
+            newArr.push(arr[i]);
+        } else if (arr[i] == "B") {
+            newArr.push(arr[i]);
+        } else if (arr[i] == "C") {
+            newArr.push(arr[i]);
+        } else if (arr[i] == "D") {
+            newArr.push(arr[i]);
+        } else if (arr[i] == "F") {
+            arr[i] = "F";
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
 }
 
 /*
@@ -113,7 +133,10 @@ function getLetterGrades(arr) {
         console.log(arr) --> ['a', 8, 7, 9]
 */
 function swap(arr, index1, index2) {
-    // implementation
+    let placeholder = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = placeholder;
+    console.log(arr);
 }
 
 /*
@@ -123,7 +146,12 @@ function swap(arr, index1, index2) {
     return the copy.
 */
 function copy(arr) {
-    // implementation
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        let element = arr[i];
+        newArr.push(element);
+    }
+    return newArr;
 }
 
 /*
@@ -145,7 +173,25 @@ function copy(arr) {
         console.log(newArr) --> [1,2,9]
 */
 function insertIntoNewArray(arr, index, element) {
-    // implementation
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(arr[i]);
+    }
+    newArr.push(element);
+    if (newArr[index] != element) {
+        let i = newArr.length - 1;
+        let placeholder = newArr[i];
+        newArr[i] = newArr[i - 1];
+        newArr[i - 1] = placeholder;
+    }
+    /*for (let n = 1; newArr[index] == element; n++) {
+      let i = newArr.length - 1; 
+      let placeholder = newArr[i];
+      newArr[i] = newArr[i-1]; 
+      newArr[i-1] = placeholder;
+    }*/
+
+    return newArr;
 }
 
 export {
