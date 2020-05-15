@@ -167,7 +167,6 @@ function insertIntoNewArray(arr, indexToInsert, element) {
         let placeholder = newArr[i];
         newArr[i] = newArr[i - 1];
         newArr[i - 1] = placeholder;
-        console.log(newArr);
     }
     return newArr;
 }
