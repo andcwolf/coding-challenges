@@ -11,7 +11,7 @@ import letterGrade from "../1-grades/grades";
 function lastElement(arr) {
     if (Array.isArray(arr) && arr.length > 0) {
         return arr[arr.length - 1];
-    } else if (arr == [] || arr == null || arr == 0 || arr == undefined) {
+    } else if (arr == null || arr == 0 || arr == undefined) {
         return null;
     }
 }
@@ -27,16 +27,16 @@ function lastElement(arr) {
         getElementAt([1,3], 5) --> undefined
         getElementAt([1,3], -3) --> undefined
 */
-
+// figure out what the lower bound check is. The lowest negative number here.
 function getElementAt(arr, index) {
     if (index >= 0) {
         return arr[index];
     } else if (index < 0) {
-        return arr[arr.length + index]; // element at arr.length + index
+        return arr[arr.length + index];
     }
     if (index > arr.length - 1 || index < arr[arr.length - arr[arr.length]]) {
     }
-} // figure out what the lower bound check is. The lowest negative number here.
+}
 
 /*  
     You are given a sorted array of Numbers. Return the median.
@@ -46,14 +46,12 @@ function getElementAt(arr, index) {
         median([4,6,8,10]) --> 7 (take mean of 6 and 8)
 */
 function median(arr) {
-    let a = 0;
     if (arr.length === 0) return null;
     if (arr.length % 2 === 0) {
-        a = (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
+        return (arr[arr.length / 2 - 1] + arr[arr.length / 2]) / 2;
     } else {
-        a = arr[(arr.length - 1) / 2];
+        return arr[(arr.length - 1) / 2];
     }
-    return a;
 }
 
 /*  
@@ -84,7 +82,6 @@ function exists(arr, num) {
 function findIndex(arr, num) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === num) {
-            //arr[4] === 99]
             return i;
         }
     }
@@ -100,21 +97,9 @@ function findIndex(arr, num) {
 
 */
 function getLetterGrades(arr) {
-    letterGrade();
     let newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] == "A") {
-            newArr.push(arr[i]);
-        } else if (arr[i] == "B") {
-            newArr.push(arr[i]);
-        } else if (arr[i] == "C") {
-            newArr.push(arr[i]);
-        } else if (arr[i] == "D") {
-            newArr.push(arr[i]);
-        } else if (arr[i] == "F") {
-            arr[i] = "F";
-            newArr.push(arr[i]);
-        }
+        newArr.push(letterGrade(arr[i]));
     }
     return newArr;
 }
@@ -136,7 +121,6 @@ function swap(arr, index1, index2) {
     let placeholder = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = placeholder;
-    console.log(arr);
 }
 
 /*
@@ -148,8 +132,9 @@ function swap(arr, index1, index2) {
 function copy(arr) {
     let newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        let element = arr[i];
-        newArr.push(element);
+        newArr[i] = arr[i];
+        // let element = arr[i];
+        // newArr.push(element);
     }
     return newArr;
 }
@@ -172,25 +157,18 @@ function copy(arr) {
         let newArr = insertIntoNewArray([1,2], 2, 9);
         console.log(newArr) --> [1,2,9]
 */
-function insertIntoNewArray(arr, index, element) {
+function insertIntoNewArray(arr, indexToInsert, element) {
     let newArr = [];
     for (let i = 0; i < arr.length; i++) {
-        newArr.push(arr[i]);
+        newArr[i] = arr[i];
     }
     newArr.push(element);
-    if (newArr[index] != element) {
-        let i = newArr.length - 1;
+    for (let i = newArr.length - 1; i > indexToInsert; i--) {
         let placeholder = newArr[i];
         newArr[i] = newArr[i - 1];
         newArr[i - 1] = placeholder;
+        console.log(newArr);
     }
-    /*for (let n = 1; newArr[index] == element; n++) {
-      let i = newArr.length - 1; 
-      let placeholder = newArr[i];
-      newArr[i] = newArr[i-1]; 
-      newArr[i-1] = placeholder;
-    }*/
-
     return newArr;
 }
 
